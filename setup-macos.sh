@@ -307,16 +307,14 @@ update_oh_my_zsh_config
 
 # Add NVM configuration
 print_status "Adding NVM configuration..."
-nvm_config='export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion'
-add_to_zshrc "$nvm_config" "# NVM configuration" "NVM_DIR"
+add_to_zshrc 'export NVM_DIR="$HOME/.nvm"' "# NVM configuration" "NVM_DIR"
+add_to_zshrc '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' "" ""
+add_to_zshrc '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' "" ""
 
 # Add jenv configuration
 print_status "Adding jenv configuration..."
-jenv_config='export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"'
-add_to_zshrc "$jenv_config" "# jenv configuration" "jenv init"
+add_to_zshrc 'export PATH="$HOME/.jenv/bin:$PATH"' "# jenv configuration" "jenv init"
+add_to_zshrc 'eval "$(jenv init -)"' "" ""
 
 # Add VS Code command line tool
 print_status "Adding VS Code command line configuration..."
@@ -324,99 +322,94 @@ add_to_zshrc 'export PATH="/Applications/Visual Studio Code.app/Contents/Resourc
 
 # Add FZF configuration
 print_status "Adding FZF configuration..."
-fzf_config='export FZF_DEFAULT_COMMAND='\''fd --type f --hidden --follow --exclude .git'\''
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='\''fd --type d --hidden --follow --exclude .git'\'''
-add_to_zshrc "$fzf_config" "# FZF configuration" "FZF_DEFAULT_COMMAND"
+add_to_zshrc 'export FZF_DEFAULT_COMMAND='\''fd --type f --hidden --follow --exclude .git'\''' "# FZF configuration" "FZF_DEFAULT_COMMAND"
+add_to_zshrc 'export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"' "" ""
+add_to_zshrc 'export FZF_ALT_C_COMMAND='\''fd --type d --hidden --follow --exclude .git'\''' "" ""
 
 # Add better defaults aliases
 print_status "Adding enhanced CLI aliases..."
-aliases_config='# Better defaults aliases
-alias ls="eza --icons --group-directories-first"
-alias ll="eza -la --icons --group-directories-first --git"
-alias la="eza -a --icons --group-directories-first"
-alias lt="eza --tree --level=2 --icons"
-alias cat="bat"
-alias find="fd"
-alias grep="rg"
-
-# Git aliases
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit"
-alias gp="git push"
-alias gl="git pull"
-alias gd="git diff"
-alias gco="git checkout"
-alias gb="git branch"
-alias glog="git log --oneline --graph --decorate"
-
-# Utility aliases
-alias reload="source ~/.zshrc"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias h="history"
-alias path='\''echo -e ${PATH//:/\\n}'\''
-alias df="df -h"
-alias du="du -h"'
-add_to_zshrc "$aliases_config" "# Enhanced aliases" "Better defaults aliases"
+add_to_zshrc '' "# Better defaults aliases" "Better defaults aliases"
+add_to_zshrc 'alias ls="eza --icons --group-directories-first"' "" ""
+add_to_zshrc 'alias ll="eza -la --icons --group-directories-first --git"' "" ""
+add_to_zshrc 'alias la="eza -a --icons --group-directories-first"' "" ""
+add_to_zshrc 'alias lt="eza --tree --level=2 --icons"' "" ""
+add_to_zshrc 'alias cat="bat"' "" ""
+add_to_zshrc 'alias find="fd"' "" ""
+add_to_zshrc 'alias grep="rg"' "" ""
+add_to_zshrc '' "" ""
+add_to_zshrc '# Git aliases' "" ""
+add_to_zshrc 'alias gs="git status"' "" ""
+add_to_zshrc 'alias ga="git add"' "" ""
+add_to_zshrc 'alias gc="git commit"' "" ""
+add_to_zshrc 'alias gp="git push"' "" ""
+add_to_zshrc 'alias gl="git pull"' "" ""
+add_to_zshrc 'alias gd="git diff"' "" ""
+add_to_zshrc 'alias gco="git checkout"' "" ""
+add_to_zshrc 'alias gb="git branch"' "" ""
+add_to_zshrc 'alias glog="git log --oneline --graph --decorate"' "" ""
+add_to_zshrc '' "" ""
+add_to_zshrc '# Utility aliases' "" ""
+add_to_zshrc 'alias reload="source ~/.zshrc"' "" ""
+add_to_zshrc 'alias ..="cd .."' "" ""
+add_to_zshrc 'alias ...="cd ../.."' "" ""
+add_to_zshrc 'alias ....="cd ../../.."' "" ""
+add_to_zshrc 'alias h="history"' "" ""
+add_to_zshrc 'alias path='\''echo -e ${PATH//:/\\n}'\''' "" ""
+add_to_zshrc 'alias df="df -h"' "" ""
+add_to_zshrc 'alias du="du -h"' "" ""
 
 # Add enhanced autocompletion
 print_status "Adding enhanced autocompletion..."
-completion_config='# Enhanced autocompletion
-autoload -U compinit && compinit
-zstyle '\'':completion:*'\'' matcher-list '\''m:{a-z}={A-Za-z}'\''
-zstyle '\'':completion:*'\'' list-colors '\'''\''
-zstyle '\'':completion:*:*:*:*:*'\'' menu select
-zstyle '\'':completion:*:*:kill:*:processes'\'' list-colors '\''=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'\'''
-add_to_zshrc "$completion_config" "# Enhanced autocompletion" "autoload -U compinit"
+add_to_zshrc '' "# Enhanced autocompletion" "autoload -U compinit"
+add_to_zshrc 'autoload -U compinit && compinit' "" ""
+add_to_zshrc 'zstyle '\'':completion:*'\'' matcher-list '\''m:{a-z}={A-Za-z}'\''' "" ""
+add_to_zshrc 'zstyle '\'':completion:*'\'' list-colors '\'''\''' "" ""
+add_to_zshrc 'zstyle '\'':completion:*:*:*:*:*'\'' menu select' "" ""
+add_to_zshrc 'zstyle '\'':completion:*:*:kill:*:processes'\'' list-colors '\''=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'\''' "" ""
 
 # Add better history settings
 print_status "Adding enhanced history configuration..."
-history_config='# Better history
-HISTSIZE=50000
-SAVEHIST=50000
-HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_STORE
-setopt HIST_VERIFY
-setopt APPEND_HISTORY
-setopt EXTENDED_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt SHARE_HISTORY'
-add_to_zshrc "$history_config" "# Better history" "HISTSIZE=50000"
+add_to_zshrc '' "# Better history" "HISTSIZE=50000"
+add_to_zshrc 'HISTSIZE=50000' "" ""
+add_to_zshrc 'SAVEHIST=50000' "" ""
+add_to_zshrc 'HISTFILE=~/.zsh_history' "" ""
+add_to_zshrc 'setopt HIST_IGNORE_DUPS' "" ""
+add_to_zshrc 'setopt HIST_IGNORE_ALL_DUPS' "" ""
+add_to_zshrc 'setopt HIST_REDUCE_BLANKS' "" ""
+add_to_zshrc 'setopt HIST_IGNORE_SPACE' "" ""
+add_to_zshrc 'setopt HIST_NO_STORE' "" ""
+add_to_zshrc 'setopt HIST_VERIFY' "" ""
+add_to_zshrc 'setopt APPEND_HISTORY' "" ""
+add_to_zshrc 'setopt EXTENDED_HISTORY' "" ""
+add_to_zshrc 'setopt HIST_EXPIRE_DUPS_FIRST' "" ""
+add_to_zshrc 'setopt HIST_FIND_NO_DUPS' "" ""
+add_to_zshrc 'setopt HIST_SAVE_NO_DUPS' "" ""
+add_to_zshrc 'setopt SHARE_HISTORY' "" ""
 
 # Add better globbing and navigation
 print_status "Adding enhanced shell options..."
-shell_options='# Better globbing
-setopt EXTENDED_GLOB
-setopt GLOB_DOTS
-
-# Directory navigation
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt PUSHD_IGNORE_DUPS
-setopt PUSHD_SILENT
-
-# Correction
-setopt CORRECT
-setopt CORRECT_ALL'
-add_to_zshrc "$shell_options" "# Enhanced shell options" "setopt EXTENDED_GLOB"
+add_to_zshrc '' "# Enhanced shell options" "setopt EXTENDED_GLOB"
+add_to_zshrc '# Better globbing' "" ""
+add_to_zshrc 'setopt EXTENDED_GLOB' "" ""
+add_to_zshrc 'setopt GLOB_DOTS' "" ""
+add_to_zshrc '' "" ""
+add_to_zshrc '# Directory navigation' "" ""
+add_to_zshrc 'setopt AUTO_CD' "" ""
+add_to_zshrc 'setopt AUTO_PUSHD' "" ""
+add_to_zshrc 'setopt PUSHD_IGNORE_DUPS' "" ""
+add_to_zshrc 'setopt PUSHD_SILENT' "" ""
+add_to_zshrc '' "" ""
+add_to_zshrc '# Correction' "" ""
+add_to_zshrc 'setopt CORRECT' "" ""
+add_to_zshrc 'setopt CORRECT_ALL' "" ""
 
 # Add firefox-dev function
 print_status "Adding firefox-dev function..."
-firefox_function='# Firefox dev mode function
-firefox-dev() {
-    local session_dir="/tmp/firefox_dev_session_$(date +%s)"
-    open -a Firefox --args --disable-web-security --user-data-dir="$session_dir" --devtools
-}'
-add_to_zshrc "$firefox_function" "# Firefox dev mode function" "firefox-dev()"
+add_to_zshrc '' "# Firefox dev mode function" "firefox-dev()"
+add_to_zshrc 'firefox-dev() {' "" ""
+add_to_zshrc '    local session_dir="/tmp/firefox_dev_session_$(date +%s)"' "" ""
+add_to_zshrc '    open -a Firefox --args --disable-web-security --user-data-dir="$session_dir" --devtools' "" ""
+add_to_zshrc '}' "" ""
 
 # Add FZF source if it exists
 add_to_zshrc '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' "# FZF key bindings and fuzzy completion" "~/.fzf.zsh"
