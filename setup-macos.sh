@@ -403,14 +403,6 @@ add_to_zshrc '# Correction' "" ""
 add_to_zshrc 'setopt CORRECT' "" ""
 add_to_zshrc 'setopt CORRECT_ALL' "" ""
 
-# Add firefox-dev function
-print_status "Adding firefox-dev function..."
-add_to_zshrc '' "# Firefox dev mode function" "firefox-dev()"
-add_to_zshrc 'firefox-dev() {' "" ""
-add_to_zshrc '    local session_dir="/tmp/firefox_dev_session_$(date +%s)"' "" ""
-add_to_zshrc '    open -a Firefox --args --disable-web-security --user-data-dir="$session_dir" --devtools' "" ""
-add_to_zshrc '}' "" ""
-
 # Add FZF source if it exists
 add_to_zshrc '[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh' "# FZF key bindings and fuzzy completion" "~/.fzf.zsh"
 
